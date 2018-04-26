@@ -1,5 +1,5 @@
 import React , { Component } from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import DB from "../DB.js";
 var DBEvents = require('react-native-db-models').DBEvents;
 
@@ -7,23 +7,23 @@ class EditQuote extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      quoteInput: null,
-      authorInput: null,
+      text: null,
+      author: null,
     };
   }
 
   render() {
     if (this.props.show) {
       return (
-        <View>
+        <View style={styles.container}>
           <Text>Quote</Text>
           <TextInput
-            onChangeText={(quoteInput) => this.setState({quoteInput})}
+            onChangeText={(text) => this.setState({text})}
             defaultValue={this.props.text}
           />
           <Text>Author</Text>
           <TextInput
-            onChangeText={(authorInput) => this.setState({authorInput})}
+            onChangeText={(author) => this.setState({author})}
             defaultValue={this.props.author}
           />
           <Button
@@ -39,17 +39,23 @@ class EditQuote extends Component {
 
   _editQuote() {
     let text = this.props.text;
-    if (this.state.quoteInput) {
-      text = this.state.quoteInput
+    if (this.state.text) {
+      text = this.state.text
     }
     let author = this.props.author;
-    if (this.state.authorInput) {
-      author = this.state.authorInput;
+    if (this.state.author) {
+      author = this.state.author;
     }
     DB.quotes.update_id(this.props.id, { text, author }, (addedData) => {
-      alert("Quote updated");
+      alert("Quote updated.");
     });
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginBottom: 140,
+  },
+});
 
 export default EditQuote;

@@ -7,24 +7,23 @@ class AddQuote extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showInputs: false,
-      quoteInput: "",
-      authorInput: "",
+      text: "",
+      author: "",
     };
   }
 
   render() {
-    if (this.props.showInputs) {
+    if (this.props.toggle) {
       return (
         <View>
           <Text>Quote</Text>
           <TextInput
-            onChangeText={(quoteInput) => this.setState({quoteInput})}
+            onChangeText={(text) => this.setState({text})}
             placeholder="hell yea"
           />
           <Text>Author</Text>
           <TextInput
-            onChangeText={(authorInput) => this.setState({authorInput})}
+            onChangeText={(author) => this.setState({author})}
             placeholder="me"
           />
           <Button
@@ -39,9 +38,11 @@ class AddQuote extends Component {
   }
 
   _addQuoteButton() {
-    DB.quotes.add({ text: this.state.quoteInput, author: this.state.authorInput }, (addedData) => {
-      alert(addedData.text, addedData.author);
-      console.log(addedData);
+    DB.quotes.add({
+      text: this.state.text,
+      author: this.state.author
+     }, (addedData) => {
+      alert("Quote added.");
     });
   }
 }
