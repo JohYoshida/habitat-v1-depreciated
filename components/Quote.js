@@ -1,5 +1,5 @@
 import React , { Component } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import EditQuote from "./EditQuote.js";
 import GetQuoteButton from "./GetQuoteButton.js";
 import DB from "../DB.js";
@@ -24,26 +24,33 @@ class Quote extends Component {
   render() {
     if (!this.props.toggle) {
       return (
-        <View>
-          <GetQuoteButton onPress={this._getQuote.bind(this)}/>
-          <Text style={styles.text}>{this.state.text}</Text>
-          <Text style={styles.author}>{this.state.author}</Text>
-          <Text style={styles.source}>{this.state.source}</Text>
-          <Button
-            onPress={this._toggleEditQuote.bind(this)}
-            title="Edit"
-          />
-          <EditQuote
-            show={this.state.showEditor}
-            text={this.state.text}
-            author={this.state.author}
-            source={this.state.source}
-            id={this.state.id}
-          />
-          <Button
-            onPress={this._deleteQuote.bind(this)}
-            title="Delete"
-            color="#f00"
+        <View style={styles.container} >
+          <View>
+            <Button
+              onPress={this._toggleEditQuote.bind(this)}
+              title="Edit"
+              />
+            <EditQuote
+              show={this.state.showEditor}
+              text={this.state.text}
+              author={this.state.author}
+              source={this.state.source}
+              id={this.state.id}
+              />
+            <Button
+              onPress={this._deleteQuote.bind(this)}
+              title="Delete"
+              color="#f00"
+              />
+          </View>
+          <ScrollView style={styles.scrollView} >
+            <Text style={styles.text}>{this.state.text}</Text>
+            <Text style={styles.author}>{this.state.author}</Text>
+            <Text style={styles.source}>{this.state.source}</Text>
+          </ScrollView>
+          <GetQuoteButton
+            style={styles.getQuoteButton}
+            onPress={this._getQuote.bind(this)}
           />
         </View>
       );
@@ -90,6 +97,17 @@ class Quote extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "flex-end",
+  },
+  getQuoteButton: {
+    flex: 1,
+    marginBottom: 30,
+  },
+  scrollView: {
+    flex: 10,
+  },
   text: {
     textAlign: "center",
     fontSize: 20,
