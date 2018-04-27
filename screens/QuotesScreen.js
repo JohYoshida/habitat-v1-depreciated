@@ -46,21 +46,8 @@ export default class QuotesScreen extends React.Component {
           />
           <QuoteList show={this.state.showQuoteList} arr={this.state.quotesArr}/>
         </View>
-        <View>
-          <Button
-            onPress={this._resetDB.bind(this)}
-            title="Reset DB"
-            color="#f01a1a"
-          />
-        </View>
       </ScrollView>
     );
-  }
-
-  _resetDB() {
-    DB.quotes.erase_db(result => {
-      alert("DB reset!");
-    })
   }
 
   _toggle() {
