@@ -9,6 +9,7 @@ class EditQuote extends Component {
     this.state = {
       text: null,
       author: null,
+      source: null,
     };
   }
 
@@ -20,11 +21,17 @@ class EditQuote extends Component {
           <TextInput
             onChangeText={(text) => this.setState({text})}
             defaultValue={this.props.text}
+            multiline={true}
           />
           <Text>Author</Text>
           <TextInput
             onChangeText={(author) => this.setState({author})}
             defaultValue={this.props.author}
+          />
+          <Text>Source</Text>
+          <TextInput
+            onChangeText={(source) => this.setState({source})}
+            defaultValue={this.props.source}
           />
           <Button
             onPress={this._editQuote.bind(this)}
@@ -46,7 +53,11 @@ class EditQuote extends Component {
     if (this.state.author) {
       author = this.state.author;
     }
-    DB.quotes.update_id(this.props.id, { text, author }, (addedData) => {
+    let source = this.props.source;
+    if (this.state.source) {
+      source = this.state.source;
+    }
+    DB.quotes.update_id(this.props.id, { text, author, source }, (addedData) => {
       alert("Quote updated.");
     });
   }

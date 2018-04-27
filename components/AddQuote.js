@@ -9,6 +9,7 @@ class AddQuote extends Component {
     this.state = {
       text: "",
       author: "",
+      source: "",
     };
   }
 
@@ -20,11 +21,19 @@ class AddQuote extends Component {
           <TextInput
             onChangeText={(text) => this.setState({text})}
             placeholder="hell yea"
+            multiline={true}
           />
           <Text>Author</Text>
           <TextInput
             onChangeText={(author) => this.setState({author})}
             placeholder="me"
+            autoCapitalize="words"
+          />
+          <Text>Source</Text>
+          <TextInput
+            onChangeText={(source) => this.setState({source})}
+            placeholder=""
+            autoCapitalize="words"
           />
           <Button
             onPress={this._addQuoteButton.bind(this)}
@@ -40,7 +49,8 @@ class AddQuote extends Component {
   _addQuoteButton() {
     DB.quotes.add({
       text: this.state.text,
-      author: this.state.author
+      author: this.state.author,
+      source: this.state.source,
      }, (addedData) => {
       alert("Quote added.");
     });

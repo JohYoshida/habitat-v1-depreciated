@@ -12,6 +12,7 @@ class Quote extends Component {
       showEditor: false,
       text: "",
       author: "",
+      source: "",
       id: "",
     };
   }
@@ -25,8 +26,9 @@ class Quote extends Component {
       return (
         <View>
           <QuoteButton onPress={this._getQuote.bind(this)}/>
-          <Text style={styles.quoteText}>{this.state.text}</Text>
-          <Text style={styles.quoteAuthor}>{this.state.author}</Text>
+          <Text style={styles.text}>{this.state.text}</Text>
+          <Text style={styles.author}>{this.state.author}</Text>
+          <Text style={styles.source}>{this.state.source}</Text>
           <Button
             onPress={this._toggleEditQuote.bind(this)}
             title="Edit"
@@ -35,6 +37,7 @@ class Quote extends Component {
             show={this.state.showEditor}
             text={this.state.text}
             author={this.state.author}
+            source={this.state.source}
             id={this.state.id}
           />
           <Button
@@ -64,6 +67,7 @@ class Quote extends Component {
         showEditor: false,
         text: quote.text,
         author: quote.author,
+        source: quote.source,
         id: quote._id,
       });
     });
@@ -86,16 +90,23 @@ class Quote extends Component {
 }
 
 const styles = StyleSheet.create({
-  quoteText: {
+  text: {
     textAlign: "center",
     fontSize: 20,
     margin: 10,
   },
-  quoteAuthor: {
+  author: {
     textAlign: "center",
-    fontSize: 15,
     margin: 10,
+    marginBottom: 0,
+    fontSize: 15,
     fontWeight: "bold",
+  },
+  source: {
+    textAlign: "center",
+    marginBottom: 10,
+    fontSize: 15,
+    fontStyle: "italic",
   },
 });
 

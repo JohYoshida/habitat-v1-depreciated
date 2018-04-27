@@ -25,7 +25,7 @@ export default class QuotesScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.scrollContainer}>
         <View>
           <Button
             onPress={this._toggle.bind(this)}
@@ -39,7 +39,7 @@ export default class QuotesScreen extends React.Component {
             toggle={this.state.toggle}
           />
         </View>
-        <View>
+        <View style={styles.container}>
           <Button
             title={this.state.viewQuotesButtonText}
             onPress={this._toggleQuoteList.bind(this)}
@@ -62,7 +62,7 @@ export default class QuotesScreen extends React.Component {
     if (this.state.showQuoteList) {
       this.setState({
         showQuoteList: false,
-        viewQuotesButtonText: "View All Quotes"
+        viewQuotesButtonText: "View All Quotes",
       });
     } else {
       DB.quotes.get_all(results => {
@@ -73,7 +73,7 @@ export default class QuotesScreen extends React.Component {
         this.setState({
           showQuoteList: true,
           viewQuotesButtonText: "Hide Quotes",
-          quotesArr: arr
+          quotesArr: arr,
         });
       });
     }
@@ -81,7 +81,13 @@ export default class QuotesScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  scrollContainer: {
     marginTop: 24,
+    flex: 1,
+  },
+  container: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "flex-end",
   },
 });

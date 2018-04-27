@@ -17,7 +17,15 @@ class QuoteList extends Component {
     // })
 
     this.props.arr.forEach(item => {
-      quotes.push({ author: item.author, text: item.text, key: item._id.toString() });
+      if (item.source) {
+        item.source = ", " + item.source;
+      }
+      quotes.push({
+        author: item.author,
+        text: item.text,
+        source: item.source,
+        key: item._id.toString()
+      });
     });
 
     if (this.props.show) {
@@ -29,8 +37,13 @@ class QuoteList extends Component {
               <Text>
                 {item.text}
               </Text>
-              <Text style={styles.bold}>
-                {item.author}
+              <Text>
+                <Text style={styles.bold}>
+                  {item.author}
+                </Text>
+                <Text style={styles.italic}>
+                  {item.source}
+                </Text>
               </Text>
             </View>
           )}
@@ -48,6 +61,9 @@ class QuoteList extends Component {
 const styles = StyleSheet.create({
   bold: {
     fontWeight: "bold",
+  },
+  italic: {
+    fontStyle: "italic",
   },
   quoteSection: {
     margin: 10,
