@@ -1,8 +1,9 @@
 import React from "react";
-import { Button, View, ScrollView, StyleSheet, Text, } from "react-native";
+import { Button, View, SectionList, ScrollView, StyleSheet, Text, } from "react-native";
 import AddQuote from "../components/AddQuote.js"
 import Quote from "../components/Quote.js"
 import QuoteButton from "../components/QuoteButton.js"
+import QuoteList from "../components/QuoteList.js"
 import DB from "../DB.js";
 var DBEvents = require('react-native-db-models').DBEvents;
 
@@ -14,8 +15,11 @@ export default class QuotesScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      buttonText: "Add Quote",
+      toggleButtonText: "Add Quote",
+      viewQuotesButtonText: "View All Quotes",
       toggle: false,
+      showQuoteList: false,
+      quotesArr: [],
     };
   }
 
@@ -25,7 +29,7 @@ export default class QuotesScreen extends React.Component {
         <View>
           <Button
             onPress={this._toggle.bind(this)}
-            title={this.state.buttonText}
+            title={this.state.toggleButtonText}
             color="#1c8613"
           />
           <AddQuote
@@ -34,6 +38,13 @@ export default class QuotesScreen extends React.Component {
           <Quote
             toggle={this.state.toggle}
           />
+        </View>
+        <View>
+          <Button
+            title={this.state.viewQuotesButtonText}
+            onPress={this._toggleQuoteList.bind(this)}
+          />
+          <QuoteList show={this.state.showQuoteList} arr={this.state.quotesArr}/>
         </View>
         <View>
           <Button
@@ -54,9 +65,30 @@ export default class QuotesScreen extends React.Component {
 
   _toggle() {
     if (this.state.toggle) {
-      this.setState({ toggle: false, buttonText: "Add Quote" });
+      this.setState({ toggle: false, toggleButtonText: "Add Quote" });
     } else {
-      this.setState({ toggle: true, buttonText: "See Quotes" });
+      this.setState({ toggle: true, toggleButtonText: "See Quotes" });
+    }
+  }
+
+  _toggleQuoteList() {
+    if (this.state.showQuoteList) {
+      this.setState({
+        showQuoteList: false,
+        viewQuotesButtonText: "View All Quotes"
+      });
+    } else {
+      DB.quotes.get_all(results => {
+        let arr = [];
+        for (item in results.rows) {
+          arr.push(results.rows[item]);
+        }
+        this.setState({
+          showQuoteList: true,
+          viewQuotesButtonText: "Hide Quotes",
+          quotesArr: arr
+        });
+      });
     }
   }
 }
