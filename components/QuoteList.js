@@ -17,7 +17,6 @@ class QuoteList extends Component {
     // })
 
     this.props.arr.forEach(item => {
-      console.log(item);
       quotes.push({ author: item.author, text: item.text, key: item._id.toString() });
     });
 
