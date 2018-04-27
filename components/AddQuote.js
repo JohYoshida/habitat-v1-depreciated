@@ -14,36 +14,32 @@ class AddQuote extends Component {
   }
 
   render() {
-    if (this.props.toggle) {
-      return (
-        <View>
-          <Text>Quote</Text>
-          <TextInput
-            onChangeText={(text) => this.setState({text})}
-            placeholder="hell yea"
-            multiline={true}
-          />
-          <Text>Author</Text>
-          <TextInput
-            onChangeText={(author) => this.setState({author})}
-            placeholder="me"
-            autoCapitalize="words"
-          />
-          <Text>Source</Text>
-          <TextInput
-            onChangeText={(source) => this.setState({source})}
-            placeholder=""
-            autoCapitalize="words"
-          />
-          <Button
-            onPress={this._addQuoteButton.bind(this)}
-            title="Add Quote"
-          />
-        </View>
-      );
-    } else {
-      return <View></View>;
-    }
+    return (
+      <View>
+        <Text>Quote</Text>
+        <TextInput
+          onChangeText={(text) => this.setState({text})}
+          placeholder="hell yea"
+          multiline={true}
+        />
+        <Text>Author</Text>
+        <TextInput
+          onChangeText={(author) => this.setState({author})}
+          placeholder="me"
+          autoCapitalize="words"
+        />
+        <Text>Source</Text>
+        <TextInput
+          onChangeText={(source) => this.setState({source})}
+          placeholder=""
+          autoCapitalize="words"
+        />
+        <Button
+          onPress={this._addQuoteButton.bind(this)}
+          title="Add Quote"
+        />
+      </View>
+    );
   }
 
   _addQuoteButton() {

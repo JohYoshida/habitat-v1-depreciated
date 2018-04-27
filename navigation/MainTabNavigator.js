@@ -15,9 +15,9 @@ import IdeasScreen from '../screens/IdeasScreen';
 
 export default TabNavigator(
   {
-    Home: {
-      screen: HomeScreen,
-    },
+    // Home: {
+    //   screen: HomeScreen,
+    // },
     // Links: {
     //   screen: LinksScreen,
     // },

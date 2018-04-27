@@ -17,18 +17,18 @@ class EditQuote extends Component {
     if (this.props.show) {
       return (
         <View style={styles.container}>
-          <Text>Quote</Text>
+          <Text style={styles.bold} >Quote</Text>
           <TextInput
             onChangeText={(text) => this.setState({text})}
             defaultValue={this.props.text}
             multiline={true}
           />
-          <Text>Author</Text>
+        <Text style={styles.bold} >Author</Text>
           <TextInput
             onChangeText={(author) => this.setState({author})}
             defaultValue={this.props.author}
           />
-          <Text>Source</Text>
+        <Text style={styles.bold} >Source</Text>
           <TextInput
             onChangeText={(source) => this.setState({source})}
             defaultValue={this.props.source}
@@ -66,6 +66,9 @@ class EditQuote extends Component {
 const styles = StyleSheet.create({
   container: {
     marginBottom: 140,
+  },
+  bold: {
+    fontWeight: "bold",
   },
 });
 

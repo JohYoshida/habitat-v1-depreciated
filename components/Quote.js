@@ -1,7 +1,7 @@
 import React , { Component } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import EditQuote from "./EditQuote.js";
-import QuoteButton from "./QuoteButton.js";
+import GetQuoteButton from "./GetQuoteButton.js";
 import DB from "../DB.js";
 var DBEvents = require('react-native-db-models').DBEvents;
 
@@ -25,7 +25,7 @@ class Quote extends Component {
     if (!this.props.toggle) {
       return (
         <View>
-          <QuoteButton onPress={this._getQuote.bind(this)}/>
+          <GetQuoteButton onPress={this._getQuote.bind(this)}/>
           <Text style={styles.text}>{this.state.text}</Text>
           <Text style={styles.author}>{this.state.author}</Text>
           <Text style={styles.source}>{this.state.source}</Text>

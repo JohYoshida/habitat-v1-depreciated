@@ -3,7 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-class QuoteButton extends Component {
+class GetQuoteButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default QuoteButton;
+export default GetQuoteButton;
