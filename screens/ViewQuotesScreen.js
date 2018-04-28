@@ -1,7 +1,8 @@
 import React from 'react';
 import {Button, View, Text} from 'react-native';
 
-import QuoteList from "../components/QuoteList";
+import QuoteList from "../components/quotes/QuoteList";
+
 import DB from "../DB.js";
 var DBEvents = require('react-native-db-models').DBEvents;
 

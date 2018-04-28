@@ -2,7 +2,8 @@ import React , { Component } from 'react';
 import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import EditQuote from "./EditQuote.js";
 import GetQuoteButton from "./GetQuoteButton.js";
-import DB from "../DB.js";
+
+import DB from "../../DB.js";
 var DBEvents = require('react-native-db-models').DBEvents;
 
 class Quote extends Component {

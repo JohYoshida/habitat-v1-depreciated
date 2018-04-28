@@ -3,7 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import QuoteButtons from "./QuoteButtons";
 
-import DB from "../DB.js";
+import DB from "../../DB.js";
 var DBEvents = require('react-native-db-models').DBEvents;
 
 class QuoteListItem extends Component {

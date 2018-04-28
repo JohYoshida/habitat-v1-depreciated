@@ -1,7 +1,5 @@
 import React , { Component } from 'react';
 import { Button, } from 'react-native';
-import DB from "../DB.js";
-var DBEvents = require('react-native-db-models').DBEvents;
 
 class DeleteQuote extends Component {
   constructor(props) {

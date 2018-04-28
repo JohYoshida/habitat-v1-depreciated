@@ -4,9 +4,6 @@ import { Button, Text, TextInput, View } from 'react-native';
 import EditQuote from "./EditQuote";
 import DeleteQuote from "./DeleteQuote";
 
-import DB from "../DB.js";
-var DBEvents = require('react-native-db-models').DBEvents;
-
 class QuoteButtons extends Component {
   constructor(props) {
     super(props);

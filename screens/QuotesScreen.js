@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, View, StyleSheet, Text} from 'react-native';
 
-import Quote from "../components/Quote";
+import Quote from "../components/quotes/Quote";
 
 export default class QuotesScreen extends React.Component {
   static navigationOptions = {

@@ -3,9 +3,6 @@ import { FlatList } from 'react-native';
 
 import QuoteListItem from "./QuoteListItem";
 
-import DB from "../DB.js";
-var DBEvents = require('react-native-db-models').DBEvents;
-
 class QuoteList extends Component {
   constructor(props) {
     super(props);
