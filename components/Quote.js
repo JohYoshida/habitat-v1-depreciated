@@ -22,44 +22,19 @@ class Quote extends Component {
   }
 
   render() {
-    if (!this.props.toggle) {
-      return (
-        <View style={styles.container} >
-          <View>
-            <Button
-              onPress={this._toggleEditQuote.bind(this)}
-              title="Edit"
-              />
-            <EditQuote
-              show={this.state.showEditor}
-              text={this.state.text}
-              author={this.state.author}
-              source={this.state.source}
-              id={this.state.id}
-              />
-            <Button
-              onPress={this._deleteQuote.bind(this)}
-              title="Delete"
-              color="#f00"
-              />
-          </View>
-          <ScrollView style={styles.scrollView} >
-            <Text style={styles.text}>{this.state.text}</Text>
-            <Text style={styles.author}>{this.state.author}</Text>
-            <Text style={styles.source}>{this.state.source}</Text>
-          </ScrollView>
-          <GetQuoteButton
-            style={styles.getQuoteButton}
-            onPress={this._getQuote.bind(this)}
-          />
-        </View>
-      );
-    } else {
-      return (
-        <View>
-        </View>
-      );
-    }
+    return (
+      <View style={styles.container} >
+        <ScrollView style={styles.scrollView} >
+          <Text style={styles.text}>{this.state.text}</Text>
+          <Text style={styles.author}>{this.state.author}</Text>
+          <Text style={styles.source}>{this.state.source}</Text>
+        </ScrollView>
+        <GetQuoteButton
+          style={styles.getQuoteButton}
+          onPress={this._getQuote.bind(this)}
+        />
+      </View>
+    );
   }
 
   _getQuote() {
