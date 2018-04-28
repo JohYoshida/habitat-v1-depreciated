@@ -3,9 +3,10 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
-import HabitsScreen from '../screens/HabitsScreen';
 import AddQuoteScreen from '../screens/AddQuoteScreen';
 import ViewQuotesScreen from '../screens/ViewQuotesScreen';
+import AddJournalScreen from '../screens/AddJournalScreen';
+
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 
 const RootStackNavigator = StackNavigator(
@@ -13,14 +14,14 @@ const RootStackNavigator = StackNavigator(
     Main: {
       screen: MainTabNavigator,
     },
-    Habits: {
-      screen: HabitsScreen,
-    },
     AddQuote: {
       screen: AddQuoteScreen,
     },
     ViewQuotes: {
       screen: ViewQuotesScreen,
+    },
+    AddJournalEntry: {
+      screen: AddJournalScreen,
     },
   },
   {
