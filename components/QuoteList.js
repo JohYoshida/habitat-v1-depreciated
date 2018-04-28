@@ -17,8 +17,8 @@ class QuoteList extends Component {
 
   render() {
     const quotes = [];
-    if (this.props.arr) {
-      this.props.arr.forEach(item => {
+    if (this.props.quotes) {
+      this.props.quotes.forEach(item => {
         quotes.push({
           author: item.author,
           text: item.text,

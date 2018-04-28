@@ -16,6 +16,10 @@ export default class QuotesScreen extends React.Component {
     };
   }
 
+  componentDidMount() {
+    // Will only run once
+  }
+
   render() {
     return (
       <View style={styles.container}>
