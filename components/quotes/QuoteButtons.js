@@ -1,5 +1,5 @@
 import React , { Component } from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
+import { Button, View } from 'react-native';
 
 import EditQuote from "./EditQuote";
 import DeleteQuote from "./DeleteQuote";
@@ -27,11 +27,11 @@ class QuoteButtons extends Component {
             getQuotes={this.props.getQuotes}
             toggleButtons={this.props.toggleButtons}
           />
-        <DeleteQuote
-          confirmed={this.props.confirmed}
-          confirmDelete={this.props.confirmDelete}
-          deleteQuote={this.props.deleteQuote}
-        />
+          <DeleteQuote
+            confirmed={this.props.confirmed}
+            confirmDelete={this.props.confirmDelete}
+            deleteQuote={this.props.deleteQuote}
+          />
         </View>
       );
     } else {
