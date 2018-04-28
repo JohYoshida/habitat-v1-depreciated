@@ -15,23 +15,24 @@ class EditQuote extends Component {
 
   render() {
     if (this.props.show) {
+      const { text, author, source } = this.props.quote
       return (
         <View style={styles.container}>
           <Text style={styles.bold} >Quote</Text>
           <TextInput
             onChangeText={(text) => this.setState({text})}
-            defaultValue={this.props.text}
+            defaultValue={text}
             multiline={true}
           />
         <Text style={styles.bold} >Author</Text>
           <TextInput
             onChangeText={(author) => this.setState({author})}
-            defaultValue={this.props.author}
+            defaultValue={author}
           />
         <Text style={styles.bold} >Source</Text>
           <TextInput
             onChangeText={(source) => this.setState({source})}
-            defaultValue={this.props.source}
+            defaultValue={source}
           />
           <Button
             onPress={this._editQuote.bind(this)}
@@ -45,20 +46,20 @@ class EditQuote extends Component {
   }
 
   _editQuote() {
-    let text = this.props.text;
+    let { text, author, source, key } = this.props.quote;
     if (this.state.text) {
-      text = this.state.text
+      text = this.state.text;
     }
-    let author = this.props.author;
     if (this.state.author) {
       author = this.state.author;
     }
-    let source = this.props.source;
     if (this.state.source) {
       source = this.state.source;
     }
-    DB.quotes.update_id(this.props.id, { text, author, source }, (addedData) => {
+    DB.quotes.update_id(key, { text, author, source }, (addedData) => {
       alert("Quote updated.");
+      this.props.toggleButtons();
+      this.props.getQuotes();
     });
   }
 }

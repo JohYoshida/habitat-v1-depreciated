@@ -19,6 +19,21 @@ export default class ViewQuotesScreen extends React.Component {
 
   componentDidMount() {
     // Will run every time "View Quotes" button on QuotesScreen is pressed.
+    this._getQuotes();
+  }
+
+  render() {
+    return (
+      <View>
+        <QuoteList
+          quotes={this.state.quotes}
+          getQuotes={this._getQuotes.bind(this)}
+        />
+      </View>
+    )
+  }
+
+  _getQuotes() {
     DB.quotes.get_all(results => {
       let quotes = [];
       for (i in results.rows) {
@@ -26,13 +41,5 @@ export default class ViewQuotesScreen extends React.Component {
       }
       this.setState({ quotes });
     });
-  }
-
-  render() {
-    return (
-      <View>
-        <QuoteList quotes={this.state.quotes} />
-      </View>
-    )
   }
 }

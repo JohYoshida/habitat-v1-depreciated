@@ -2,6 +2,7 @@ import React , { Component } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
 
 import EditQuote from "./EditQuote";
+import DeleteQuote from "./DeleteQuote";
 
 import DB from "../DB.js";
 var DBEvents = require('react-native-db-models').DBEvents;
@@ -24,16 +25,16 @@ class QuoteButtons extends Component {
           />
           <EditQuote
             show={this.props.showEditor}
-            text={this.props.text}
-            author={this.props.author}
-            source={this.props.source}
-            id={this.props.id}
+            quote={this.props.quote}
+            submitEdits={this.props.submitEdits}
+            getQuotes={this.props.getQuotes}
+            toggleButtons={this.props.toggleButtons}
           />
-          <Button
-            title="Delete"
-            onPress={this.props.deleteQuote}
-            color="#f00"
-          />
+        <DeleteQuote
+          confirmed={this.props.confirmed}
+          confirmDelete={this.props.confirmDelete}
+          deleteQuote={this.props.deleteQuote}
+        />
         </View>
       );
     } else {
