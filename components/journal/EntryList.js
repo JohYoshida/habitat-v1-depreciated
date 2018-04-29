@@ -1,5 +1,5 @@
 import React , { Component } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 
 import EntryListItem from "./EntryListItem";
 
@@ -11,11 +11,25 @@ class EntryList extends Component {
   }
 
   render() {
+    const entries = [];
+    if (this.props.entries) {
+      this.props.entries.forEach(item => {
+        entries.push({
+          title: item.title,
+          body: item.body,
+          createdAt: item.createdAt,
+          updatedAt: item.updatedAt,
+          key: item._id.toString()
+        });
+      });
+    }
+
     return (
       <FlatList
-        data={[{key: "1"}]}
+        data={entries}
         extraData={this.state}
         renderItem={this._renderItem}
+        itemSeparatorComponent={this._renderSeparator}
       />
     );
   }
@@ -23,9 +37,22 @@ class EntryList extends Component {
   _renderItem = ({item}) => (
     <EntryListItem
       id={item.key}
-      getQuotes={this.props.getQuotes}
+      entry={item}
+      getEntries={this.props.getEntries}
     />
   );
+
+  _renderSeparator = () => {
+    return <View style={styles.separator}/>;
+  }
 }
+
+const styles = StyleSheet.create({
+  separator: {
+    height: 1,
+    width: "86%",
+    backgroundColor: "#CED0CE",
+  },
+});
 
 export default EntryList;

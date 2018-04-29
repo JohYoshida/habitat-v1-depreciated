@@ -1,5 +1,8 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
+
+import DB from "../DB.js";
+var DBEvents = require('react-native-db-models').DBEvents;
 
 import EntryList from "../components/journal/EntryList";
 
@@ -8,11 +11,27 @@ export default class JournalScreen extends React.Component {
     title: 'Journal',
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      entries: [],
+    };
+  }
+
+  componentDidMount() {
+    this._getEntries();
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.entries}>
-          <EntryList />
+          <ScrollView>
+            <EntryList
+              getEntries={this._getEntries.bind(this)}
+              entries={this.state.entries}
+              />
+          </ScrollView>
         </View>
         <View style={styles.buttons}>
           <Button
@@ -22,6 +41,16 @@ export default class JournalScreen extends React.Component {
         </View>
       </View>
     )
+  }
+
+  _getEntries() {
+    DB.journalEntry.get_all(results => {
+      let entries = [];
+      for (i in results.rows) {
+        entries.push(results.rows[i]);
+      }
+      this.setState({ entries });
+    });
   }
 }
 
