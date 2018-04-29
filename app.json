@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "habitat",
-    "description": "A very interesting project.",
+    "description": "A place to store quotes, log journals, and build habits",
     "slug": "habitat",
     "privacy": "public",
     "sdkVersion": "26.0.0",
@@ -21,7 +21,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.johyoshida.habitat",
+    },
+    "android": {
+      "package": "com.johyoshida.habitat",
     }
   }
 }
