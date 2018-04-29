@@ -7,10 +7,23 @@ class AddQuote extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      quote: [],
       text: "",
       author: "",
       source: "",
     };
+  }
+
+  componentDidMount() {
+    DB.quotes.get_all(results => {
+      let arr = [];
+      for (item in results.rows) {
+        arr.push(results.rows[item]);
+      }
+      const index = Math.floor(Math.random() * arr.length);
+      const quote = arr[index];
+      this.setState({ quote });
+    })
   }
 
   render() {
@@ -19,19 +32,19 @@ class AddQuote extends Component {
         <Text>Quote</Text>
         <TextInput
           onChangeText={(text) => this.setState({text})}
-          placeholder="hell yea"
+          placeholder={this.state.quote.text}
           multiline={true}
         />
         <Text>Author</Text>
         <TextInput
           onChangeText={(author) => this.setState({author})}
-          placeholder="me"
+          placeholder={this.state.quote.author}
           autoCapitalize="words"
         />
         <Text>Source</Text>
         <TextInput
           onChangeText={(source) => this.setState({source})}
-          placeholder=""
+          placeholder={this.state.quote.source}
           autoCapitalize="words"
         />
         <Button

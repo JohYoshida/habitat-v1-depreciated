@@ -25,12 +25,12 @@ class EditQuote extends Component {
             defaultValue={text}
             multiline={true}
           />
-        <Text style={styles.bold} >Author</Text>
+          <Text style={styles.bold} >Author</Text>
           <TextInput
             onChangeText={(author) => this.setState({author})}
             defaultValue={author}
           />
-        <Text style={styles.bold} >Source</Text>
+          <Text style={styles.bold} >Source</Text>
           <TextInput
             onChangeText={(source) => this.setState({source})}
             defaultValue={source}

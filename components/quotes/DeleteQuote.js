@@ -5,9 +5,6 @@ class DeleteQuote extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: null,
-      author: null,
-      source: null,
     };
   }
 

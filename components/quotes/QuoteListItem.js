@@ -59,7 +59,7 @@ class QuoteListItem extends Component {
     DB.quotes.remove_id(key, () => {
       alert("Deleted!");
       this.props.getQuotes();
-      this.setState({confirmed: false });
+      this.setState({ confirmed: false });
     });
   }
 
