@@ -12,9 +12,10 @@ export default class AddJournalScreen extends React.Component {
   };
 
   render() {
+    const { params } = this.props.navigation.state;
     return (
       <View>
-        <AddEntry />
+        <AddEntry getEntries={params.getEntries}/>
       </View>
     )
   }

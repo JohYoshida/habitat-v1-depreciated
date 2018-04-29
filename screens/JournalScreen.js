@@ -35,7 +35,9 @@ export default class JournalScreen extends React.Component {
         </View>
         <View style={styles.buttons}>
           <Button
-            onPress={() => this.props.navigation.navigate("AddJournalEntry")}
+            onPress={() => this.props.navigation.navigate("AddJournalEntry", {
+              getEntries: this._getEntries.bind(this)
+            })}
             title="Create Journal Entry"
           />
         </View>

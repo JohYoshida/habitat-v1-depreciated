@@ -41,6 +41,7 @@ class AddEntry extends Component {
     const { title, body } = this.state;
     const createdAt = moment().format("MMMM Do YYYY, h:mm a");
     DB.journalEntry.add({ title, body, createdAt }, (addedData) => {
+      this.props.getEntries();
       alert("Entry added.");
     });
   }
