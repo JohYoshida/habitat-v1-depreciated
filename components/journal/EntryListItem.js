@@ -1,4 +1,4 @@
-import React , { Component } from 'react';
+import React , { PureComponent } from 'react';
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 
 import EntryButtons from "./EntryButtons";
@@ -6,7 +6,7 @@ import EntryButtons from "./EntryButtons";
 import DB from "../../DB.js";
 var DBEvents = require('react-native-db-models').DBEvents;
 
-class EntryListItem extends Component {
+class EntryListItem extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
