@@ -1,5 +1,5 @@
 import React , { Component } from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import DB from "../../DB.js";
 var DBEvents = require('react-native-db-models').DBEvents;
 
@@ -29,19 +29,19 @@ class AddQuote extends Component {
   render() {
     return (
       <View>
-        <Text>Quote</Text>
+        <Text style={styles.bold}>Quote</Text>
         <TextInput
           onChangeText={(text) => this.setState({text})}
           placeholder={this.state.quote.text}
           multiline={true}
         />
-        <Text>Author</Text>
+      <Text style={styles.bold}>Author</Text>
         <TextInput
           onChangeText={(author) => this.setState({author})}
           placeholder={this.state.quote.author}
           autoCapitalize="words"
         />
-        <Text>Source</Text>
+      <Text style={styles.bold}>Source</Text>
         <TextInput
           onChangeText={(source) => this.setState({source})}
           placeholder={this.state.quote.source}
@@ -65,5 +65,11 @@ class AddQuote extends Component {
     });
   }
 }
+
+const styles = StyleSheet.create({
+  bold: {
+    fontWeight: "bold",
+  },
+});
 
 export default AddQuote;

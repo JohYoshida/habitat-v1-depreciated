@@ -1,5 +1,5 @@
 import React , { Component } from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import moment from 'moment';
 
 import DB from "../../DB.js";
@@ -17,13 +17,13 @@ class AddEntry extends Component {
   render() {
     return (
       <View>
-        <Text>Title</Text>
+        <Text style={styles.bold}>Title</Text>
         <TextInput
           onChangeText={(title) => this.setState({title})}
           placeholder="Journal Entry"
           autoCapitalize="words"
         />
-      <Text>Body</Text>
+      <Text style={styles.bold}>Body</Text>
         <TextInput
           onChangeText={(body) => this.setState({body})}
           placeholder="Captain's log, Stardate..."
@@ -46,5 +46,11 @@ class AddEntry extends Component {
     });
   }
 }
+
+const styles = StyleSheet.create({
+  bold: {
+    fontWeight: "bold",
+  },
+})
 
 export default AddEntry;
