@@ -1,6 +1,7 @@
 import React , { Component } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
-import DB from "../DB.js";
+
+import DB from "../../DB.js";
 var DBEvents = require('react-native-db-models').DBEvents;
 
 class AddHabit extends Component {

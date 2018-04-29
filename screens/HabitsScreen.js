@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, View, Text, TouchableOpacity } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
-import AddHabit from '../components/AddHabit.js';
+import AddHabit from '../components/habits/AddHabit.js';
 
 export default class HabitsScreen extends React.Component {
   static navigationOptions = {
