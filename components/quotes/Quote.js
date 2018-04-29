@@ -1,10 +1,17 @@
-import React , { Component } from 'react';
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import React, { Component } from "react";
+import {
+  Button,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View
+} from "react-native";
 import EditQuote from "./EditQuote.js";
 import GetQuoteButton from "./GetQuoteButton.js";
 
 import DB from "../../DB.js";
-var DBEvents = require('react-native-db-models').DBEvents;
+var DBEvents = require("react-native-db-models").DBEvents;
 
 class Quote extends Component {
   constructor(props) {
@@ -14,7 +21,7 @@ class Quote extends Component {
       text: "",
       author: "",
       source: "",
-      id: "",
+      id: ""
     };
   }
 
@@ -24,8 +31,8 @@ class Quote extends Component {
 
   render() {
     return (
-      <View style={styles.container} >
-        <ScrollView style={styles.scrollView} >
+      <View style={styles.container}>
+        <ScrollView style={styles.scrollView}>
           <Text style={styles.text}>{this.state.text}</Text>
           <Text style={styles.author}>{this.state.author}</Text>
           <Text style={styles.source}>{this.state.source}</Text>
@@ -51,7 +58,7 @@ class Quote extends Component {
         text: quote.text,
         author: quote.author,
         source: quote.source,
-        id: quote._id,
+        id: quote._id
       });
     });
   }
@@ -66,7 +73,7 @@ class Quote extends Component {
 
   _deleteQuote() {
     DB.quotes.remove_id(this.state.id, () => {
-      alert("Deleted!")
+      alert("Deleted!");
       this._getQuote();
     });
   }
@@ -75,33 +82,33 @@ class Quote extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-end",
+    justifyContent: "flex-end"
   },
   getQuoteButton: {
     flex: 1,
-    marginBottom: 30,
+    marginBottom: 30
   },
   scrollView: {
-    flex: 10,
+    flex: 10
   },
   text: {
     textAlign: "center",
     fontSize: 20,
-    margin: 10,
+    margin: 10
   },
   author: {
     textAlign: "center",
     margin: 10,
     marginBottom: 0,
     fontSize: 15,
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   source: {
     textAlign: "center",
     marginBottom: 10,
     fontSize: 15,
-    fontStyle: "italic",
-  },
+    fontStyle: "italic"
+  }
 });
 
 export default Quote;

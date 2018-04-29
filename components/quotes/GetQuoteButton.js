@@ -1,24 +1,24 @@
-import React , { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Platform } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import React, { Component } from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Platform } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 class GetQuoteButton extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
 
   render() {
     return (
-      <TouchableOpacity
-        style={styles.quoteButton}
-        onPress={this.props.onPress}
-      >
+      <TouchableOpacity style={styles.quoteButton} onPress={this.props.onPress}>
         <Ionicons
           style={styles.icon}
-          name={Platform.OS === 'ios' ? `ios-egg${focused ? '' : '-outline'}` : 'md-egg'}
+          name={
+            Platform.OS === "ios"
+              ? `ios-egg${focused ? "" : "-outline"}`
+              : "md-egg"
+          }
           color="#e8e7d2"
         />
       </TouchableOpacity>
@@ -34,11 +34,11 @@ const styles = StyleSheet.create({
     marginLeft: 110,
     marginRight: 110,
     backgroundColor: "#486cc9",
-    borderRadius: 100,
+    borderRadius: 100
   },
   icon: {
-    fontSize: 100,
-  },
+    fontSize: 100
+  }
 });
 
 export default GetQuoteButton;

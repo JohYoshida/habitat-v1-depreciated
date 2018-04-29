@@ -1,5 +1,5 @@
-import React , { Component } from 'react';
-import { FlatList } from 'react-native';
+import React, { Component } from "react";
+import { FlatList } from "react-native";
 
 import QuoteListItem from "./QuoteListItem";
 
@@ -8,7 +8,7 @@ class QuoteList extends Component {
     super(props);
     this.state = {
       showButtons: false,
-      showEditor: false,
+      showEditor: false
     };
   }
 
@@ -34,7 +34,7 @@ class QuoteList extends Component {
     );
   }
 
-  _renderItem = ({item}) => (
+  _renderItem = ({ item }) => (
     <QuoteListItem
       id={item.key}
       quote={item}

@@ -1,38 +1,38 @@
-import { Notifications } from 'expo';
-import React from 'react';
-import { StackNavigator } from 'react-navigation';
+import { Notifications } from "expo";
+import React from "react";
+import { StackNavigator } from "react-navigation";
 
-import MainTabNavigator from './MainTabNavigator';
-import AddQuoteScreen from '../screens/AddQuoteScreen';
-import ViewQuotesScreen from '../screens/ViewQuotesScreen';
-import AddJournalScreen from '../screens/AddJournalScreen';
+import MainTabNavigator from "./MainTabNavigator";
+import AddQuoteScreen from "../screens/AddQuoteScreen";
+import ViewQuotesScreen from "../screens/ViewQuotesScreen";
+import AddJournalScreen from "../screens/AddJournalScreen";
 
-import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
+import registerForPushNotificationsAsync from "../api/registerForPushNotificationsAsync";
 
 const RootStackNavigator = StackNavigator(
   {
     Main: {
-      screen: MainTabNavigator,
+      screen: MainTabNavigator
     },
     AddQuote: {
-      screen: AddQuoteScreen,
+      screen: AddQuoteScreen
     },
     ViewQuotes: {
-      screen: ViewQuotesScreen,
+      screen: ViewQuotesScreen
     },
     AddJournalEntry: {
-      screen: AddJournalScreen,
-    },
+      screen: AddJournalScreen
+    }
   },
   {
-    initialRouteName: 'Main',
+    initialRouteName: "Main"
   },
   {
     navigationOptions: () => ({
       headerTitleStyle: {
-        fontWeight: 'normal',
-      },
-    }),
+        fontWeight: "normal"
+      }
+    })
   }
 );
 
@@ -57,10 +57,14 @@ export default class RootNavigator extends React.Component {
     registerForPushNotificationsAsync();
 
     // Watch for incoming notifications
-    this._notificationSubscription = Notifications.addListener(this._handleNotification);
+    this._notificationSubscription = Notifications.addListener(
+      this._handleNotification
+    );
   }
 
   _handleNotification = ({ origin, data }) => {
-    console.log(`Push notification ${origin} with data: ${JSON.stringify(data)}`);
+    console.log(
+      `Push notification ${origin} with data: ${JSON.stringify(data)}`
+    );
   };
 }

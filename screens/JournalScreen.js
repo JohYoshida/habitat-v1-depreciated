@@ -1,20 +1,20 @@
-import React from 'react';
-import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import DB from "../DB.js";
-var DBEvents = require('react-native-db-models').DBEvents;
+var DBEvents = require("react-native-db-models").DBEvents;
 
 import EntryList from "../components/journal/EntryList";
 
 export default class JournalScreen extends React.Component {
   static navigationOptions = {
-    title: 'Journal',
+    title: "Journal"
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      entries: [],
+      entries: []
     };
   }
 
@@ -30,19 +30,21 @@ export default class JournalScreen extends React.Component {
             <EntryList
               getEntries={this._getEntries.bind(this)}
               entries={this.state.entries}
-              />
+            />
           </ScrollView>
         </View>
         <View style={styles.buttons}>
           <Button
-            onPress={() => this.props.navigation.navigate("AddJournalEntry", {
-              getEntries: this._getEntries.bind(this)
-            })}
+            onPress={() =>
+              this.props.navigation.navigate("AddJournalEntry", {
+                getEntries: this._getEntries.bind(this)
+              })
+            }
             title="Create Journal Entry"
           />
         </View>
       </View>
-    )
+    );
   }
 
   _getEntries() {
@@ -60,14 +62,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 24,
-    justifyContent: "flex-end",
+    justifyContent: "flex-end"
   },
   entries: {
-    flex: 10,
+    flex: 10
   },
   buttons: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-evenly"
-  },
+  }
 });

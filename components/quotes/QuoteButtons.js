@@ -1,5 +1,5 @@
-import React , { Component } from 'react';
-import { Button, View } from 'react-native';
+import React, { Component } from "react";
+import { Button, View } from "react-native";
 
 import EditQuote from "./EditQuote";
 import DeleteQuote from "./DeleteQuote";
@@ -8,7 +8,7 @@ class QuoteButtons extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false,
+      show: false
     };
   }
 
@@ -16,10 +16,7 @@ class QuoteButtons extends Component {
     if (this.props.show) {
       return (
         <View>
-          <Button
-            title="Edit"
-            onPress={this.props.editQuote}
-          />
+          <Button title="Edit" onPress={this.props.editQuote} />
           <EditQuote
             show={this.props.showEditor}
             quote={this.props.quote}
@@ -35,7 +32,7 @@ class QuoteButtons extends Component {
         </View>
       );
     } else {
-      return <View></View>;
+      return <View />;
     }
   }
 }

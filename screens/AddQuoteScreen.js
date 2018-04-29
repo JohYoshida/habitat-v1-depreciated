@@ -1,11 +1,11 @@
-import React from 'react';
-import {Button, View, Text} from 'react-native';
+import React from "react";
+import { Button, View, Text } from "react-native";
 
 import AddQuote from "../components/quotes/AddQuote";
 
 export default class AddQuoteScreen extends React.Component {
   static navigationOptions = {
-    title: 'Add a Quote',
+    title: "Add a Quote"
   };
 
   render() {
@@ -13,6 +13,6 @@ export default class AddQuoteScreen extends React.Component {
       <View>
         <AddQuote />
       </View>
-    )
+    );
   }
 }

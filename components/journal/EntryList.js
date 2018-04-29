@@ -1,13 +1,12 @@
-import React , { Component } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import React, { Component } from "react";
+import { FlatList, StyleSheet } from "react-native";
 
 import EntryListItem from "./EntryListItem";
 
 class EntryList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
 
   render() {
@@ -34,7 +33,7 @@ class EntryList extends Component {
     );
   }
 
-  _renderItem = ({item}) => (
+  _renderItem = ({ item }) => (
     <EntryListItem
       id={item.key}
       entry={item}
@@ -43,16 +42,16 @@ class EntryList extends Component {
   );
 
   _renderSeparator = () => {
-    return <View style={styles.separator}/>;
-  }
+    return <View style={styles.separator} />;
+  };
 }
 
 const styles = StyleSheet.create({
   separator: {
     height: 1,
     width: "86%",
-    backgroundColor: "#CED0CE",
-  },
+    backgroundColor: "#CED0CE"
+  }
 });
 
 export default EntryList;

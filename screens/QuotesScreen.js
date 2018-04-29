@@ -1,19 +1,17 @@
-import React from 'react';
-import {Button, View, StyleSheet, Text} from 'react-native';
+import React from "react";
+import { Button, View, StyleSheet, Text } from "react-native";
 
 import Quote from "../components/quotes/Quote";
 
 export default class QuotesScreen extends React.Component {
   static navigationOptions = {
     // title: "Quotes",
-    header: null,
+    header: null
   };
 
   constructor(props) {
     super(props);
-    this.state = {
-
-    };
+    this.state = {};
   }
 
   componentDidMount() {
@@ -30,14 +28,14 @@ export default class QuotesScreen extends React.Component {
           <Button
             onPress={() => this.props.navigation.navigate("AddQuote")}
             title="Add a Quote"
-            />
+          />
           <Button
             onPress={() => this.props.navigation.navigate("ViewQuotes")}
             title="View Quotes"
-            />
+          />
         </View>
       </View>
-    )
+    );
   }
 }
 
@@ -45,14 +43,14 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 24,
     flex: 1,
-    justifyContent: "flex-end",
+    justifyContent: "flex-end"
   },
   quote: {
-    flex: 10,
+    flex: 10
   },
   buttons: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-evenly"
-  },
+  }
 });

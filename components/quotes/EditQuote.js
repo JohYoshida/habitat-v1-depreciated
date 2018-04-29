@@ -1,8 +1,8 @@
-import React , { Component } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import React, { Component } from "react";
+import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 import DB from "../../DB.js";
-var DBEvents = require('react-native-db-models').DBEvents;
+var DBEvents = require("react-native-db-models").DBEvents;
 
 class EditQuote extends Component {
   constructor(props) {
@@ -10,39 +10,36 @@ class EditQuote extends Component {
     this.state = {
       text: null,
       author: null,
-      source: null,
+      source: null
     };
   }
 
   render() {
     if (this.props.show) {
-      const { text, author, source } = this.props.quote
+      const { text, author, source } = this.props.quote;
       return (
         <View style={styles.container}>
-          <Text style={styles.bold} >Quote</Text>
+          <Text style={styles.bold}>Quote</Text>
           <TextInput
-            onChangeText={(text) => this.setState({text})}
+            onChangeText={text => this.setState({ text })}
             defaultValue={text}
             multiline={true}
           />
-          <Text style={styles.bold} >Author</Text>
+          <Text style={styles.bold}>Author</Text>
           <TextInput
-            onChangeText={(author) => this.setState({author})}
+            onChangeText={author => this.setState({ author })}
             defaultValue={author}
           />
-          <Text style={styles.bold} >Source</Text>
+          <Text style={styles.bold}>Source</Text>
           <TextInput
-            onChangeText={(source) => this.setState({source})}
+            onChangeText={source => this.setState({ source })}
             defaultValue={source}
           />
-          <Button
-            onPress={this._editQuote.bind(this)}
-            title="Submit Edits"
-          />
+          <Button onPress={this._editQuote.bind(this)} title="Submit Edits" />
         </View>
       );
     } else {
-      return <View></View>;
+      return <View />;
     }
   }
 
@@ -57,7 +54,7 @@ class EditQuote extends Component {
     if (this.state.source) {
       source = this.state.source;
     }
-    DB.quotes.update_id(key, { text, author, source }, (addedData) => {
+    DB.quotes.update_id(key, { text, author, source }, addedData => {
       alert("Quote updated.");
       this.props.toggleButtons();
       this.props.getQuotes();
@@ -67,11 +64,11 @@ class EditQuote extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 140,
+    marginBottom: 140
   },
   bold: {
-    fontWeight: "bold",
-  },
+    fontWeight: "bold"
+  }
 });
 
 export default EditQuote;

@@ -1,7 +1,7 @@
-import React , { Component } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import React, { Component } from "react";
+import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import DB from "../../DB.js";
-var DBEvents = require('react-native-db-models').DBEvents;
+var DBEvents = require("react-native-db-models").DBEvents;
 
 class AddQuote extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class AddQuote extends Component {
       quote: [],
       text: "",
       author: "",
-      source: "",
+      source: ""
     };
   }
 
@@ -23,7 +23,7 @@ class AddQuote extends Component {
       const index = Math.floor(Math.random() * arr.length);
       const quote = arr[index];
       this.setState({ quote });
-    })
+    });
   }
 
   render() {
@@ -31,45 +31,45 @@ class AddQuote extends Component {
       <View>
         <Text style={styles.bold}>Quote</Text>
         <TextInput
-          onChangeText={(text) => this.setState({text})}
+          onChangeText={text => this.setState({ text })}
           placeholder={this.state.quote.text}
           multiline={true}
         />
-      <Text style={styles.bold}>Author</Text>
+        <Text style={styles.bold}>Author</Text>
         <TextInput
-          onChangeText={(author) => this.setState({author})}
+          onChangeText={author => this.setState({ author })}
           placeholder={this.state.quote.author}
           autoCapitalize="words"
         />
-      <Text style={styles.bold}>Source</Text>
+        <Text style={styles.bold}>Source</Text>
         <TextInput
-          onChangeText={(source) => this.setState({source})}
+          onChangeText={source => this.setState({ source })}
           placeholder={this.state.quote.source}
           autoCapitalize="words"
         />
-        <Button
-          onPress={this._addQuoteButton.bind(this)}
-          title="Add Quote"
-        />
+        <Button onPress={this._addQuoteButton.bind(this)} title="Add Quote" />
       </View>
     );
   }
 
   _addQuoteButton() {
-    DB.quotes.add({
-      text: this.state.text,
-      author: this.state.author,
-      source: this.state.source,
-     }, (addedData) => {
-      alert("Quote added.");
-    });
+    DB.quotes.add(
+      {
+        text: this.state.text,
+        author: this.state.author,
+        source: this.state.source
+      },
+      addedData => {
+        alert("Quote added.");
+      }
+    );
   }
 }
 
 const styles = StyleSheet.create({
   bold: {
-    fontWeight: "bold",
-  },
+    fontWeight: "bold"
+  }
 });
 
 export default AddQuote;

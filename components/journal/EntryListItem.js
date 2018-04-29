@@ -1,10 +1,10 @@
-import React , { PureComponent } from 'react';
-import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
+import React, { PureComponent } from "react";
+import { Text, TouchableOpacity, StyleSheet, View } from "react-native";
 
 import EntryButtons from "./EntryButtons";
 
 import DB from "../../DB.js";
-var DBEvents = require('react-native-db-models').DBEvents;
+var DBEvents = require("react-native-db-models").DBEvents;
 
 class EntryListItem extends PureComponent {
   constructor(props) {
@@ -12,7 +12,7 @@ class EntryListItem extends PureComponent {
     this.state = {
       showButtons: false,
       showEditor: false,
-      confirmed: false,
+      confirmed: false
     };
   }
 
@@ -81,14 +81,14 @@ class EntryListItem extends PureComponent {
 const styles = StyleSheet.create({
   entrySection: {
     margin: 10,
-    marginTop: 0,
+    marginTop: 0
   },
   bold: {
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   italic: {
-    fontStyle: "italic",
-  },
+    fontStyle: "italic"
+  }
 });
 
 export default EntryListItem;

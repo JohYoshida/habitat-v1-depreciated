@@ -1,11 +1,10 @@
-import React , { Component } from 'react';
-import { Button, } from 'react-native';
+import React, { Component } from "react";
+import { Button } from "react-native";
 
 class DeleteQuote extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
 
   render() {

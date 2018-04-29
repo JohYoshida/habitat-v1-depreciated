@@ -1,5 +1,5 @@
-import React , { Component } from 'react';
-import { Button, View } from 'react-native';
+import React, { Component } from "react";
+import { Button, View } from "react-native";
 
 import EditEntry from "./EditEntry";
 import DeleteEntry from "./DeleteEntry";
@@ -8,7 +8,7 @@ class EntryButtons extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false,
+      show: false
     };
   }
 
@@ -16,10 +16,7 @@ class EntryButtons extends Component {
     if (this.props.show) {
       return (
         <View>
-          <Button
-            title="Edit"
-            onPress={this.props.editEntry}
-          />
+          <Button title="Edit" onPress={this.props.editEntry} />
           <EditEntry
             show={this.props.showEditor}
             entry={this.props.entry}
@@ -28,7 +25,7 @@ class EntryButtons extends Component {
             getEntries={this.props.getEntries}
             toggleButtons={this.props.toggleButtons}
           />
-        <DeleteEntry
+          <DeleteEntry
             confirmed={this.props.confirmed}
             confirmDelete={this.props.confirmDelete}
             deleteEntry={this.props.deleteEntry}
@@ -36,7 +33,7 @@ class EntryButtons extends Component {
         </View>
       );
     } else {
-      return <View></View>;
+      return <View />;
     }
   }
 }

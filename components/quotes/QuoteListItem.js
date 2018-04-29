@@ -1,10 +1,10 @@
-import React , { PureComponent } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { PureComponent } from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import QuoteButtons from "./QuoteButtons";
 
 import DB from "../../DB.js";
-var DBEvents = require('react-native-db-models').DBEvents;
+var DBEvents = require("react-native-db-models").DBEvents;
 
 class QuoteListItem extends PureComponent {
   constructor(props) {
@@ -12,7 +12,7 @@ class QuoteListItem extends PureComponent {
     this.state = {
       showButtons: false,
       showEditor: false,
-      confirmed: false,
+      confirmed: false
     };
   }
 
@@ -74,15 +74,15 @@ class QuoteListItem extends PureComponent {
 
 const styles = StyleSheet.create({
   bold: {
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   italic: {
-    fontStyle: "italic",
+    fontStyle: "italic"
   },
   quoteSection: {
     margin: 10,
-    marginTop: 0,
-  },
+    marginTop: 0
+  }
 });
 
 export default QuoteListItem;

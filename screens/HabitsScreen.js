@@ -1,18 +1,18 @@
-import React from 'react';
-import { Button, View, Text, TouchableOpacity } from 'react-native';
-import DateTimePicker from 'react-native-modal-datetime-picker';
+import React from "react";
+import { Button, View, Text, TouchableOpacity } from "react-native";
+import DateTimePicker from "react-native-modal-datetime-picker";
 
-import AddHabit from '../components/AddHabit.js';
+import AddHabit from "../components/AddHabit.js";
 
 export default class HabitsScreen extends React.Component {
   static navigationOptions = {
-    title: 'Habits',
+    title: "Habits"
   };
   constructor(props) {
     super(props);
     this.state = {
       isDatePickerVisible: false,
-      showAddHabit: false,
+      showAddHabit: false
     };
   }
 
@@ -20,20 +20,20 @@ export default class HabitsScreen extends React.Component {
 
   _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
-  _handleDatePicked = (date) => {
-    console.log('A date has been picked: ', date);
+  _handleDatePicked = date => {
+    console.log("A date has been picked: ", date);
     this._hideDateTimePicker();
   };
 
   _toggleAddHabit() {
     if (this.state.showAddHabit) {
-      this.setState({ showAddHabit: false, });
+      this.setState({ showAddHabit: false });
     } else {
-      this.setState({ showAddHabit: true, });
+      this.setState({ showAddHabit: true });
     }
   }
 
-  render () {
+  render() {
     return (
       <View>
         <Button
