@@ -1,5 +1,5 @@
 import React , { Component } from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import DB from "../../DB.js";
 var DBEvents = require('react-native-db-models').DBEvents;
@@ -13,19 +13,21 @@ class AddHabit extends Component {
   }
 
   render() {
-    if (this.props.toggle) {
-      return (
-        <View>
-          <Text>Habit</Text>
-          <TextInput
-            onChangeText={(name) => this.setState({name})}
-          />
-        </View>
-      );
-    } else {
-      return <View></View>;
-    }
+    return (
+      <View>
+        <Text style={styles.bold}>Habit</Text>
+        <TextInput
+          onChangeText={(name) => this.setState({name})}
+        />
+      </View>
+    );
   }
 }
+
+const styles = StyleSheet.create({
+  bold: {
+    fontWeight: "bold",
+  },
+});
 
 export default AddHabit;
