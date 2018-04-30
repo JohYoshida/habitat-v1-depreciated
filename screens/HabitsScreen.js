@@ -37,7 +37,7 @@ export default class HabitsScreen extends React.Component {
     return (
       <View>
         <Button
-          onPress={this._toggleAddHabit.bind(this)}
+          onPress={() => this.props.navigation.navigate("AddHabit")}
           title="Add New Habit"
         />
         <AddHabit toggle={this.state.showAddHabit} />
