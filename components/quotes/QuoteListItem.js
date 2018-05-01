@@ -45,9 +45,9 @@ class QuoteListItem extends PureComponent {
 
   _editQuote(key) {
     if (this.state.showEditor) {
-      this.setState({ showEditor: false, });
+      this.setState({ showEditor: false, confirmed: false });
     } else {
-      this.setState({ showEditor: true, });
+      this.setState({ showEditor: true, confirmed: false });
     }
   }
 
@@ -65,9 +65,9 @@ class QuoteListItem extends PureComponent {
 
   _toggleButtons() {
     if (this.state.showButtons) {
-      this.setState({ showButtons: false });
+      this.setState({ showButtons: false, confirmed: false, showEditor: false });
     } else {
-      this.setState({ showButtons: true });
+      this.setState({ showButtons: true, confirmed: false });
     }
   }
 }
