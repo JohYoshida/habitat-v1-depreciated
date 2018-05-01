@@ -6,8 +6,7 @@ import EntryListItem from "./EntryListItem";
 class EntryList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
 
   render() {

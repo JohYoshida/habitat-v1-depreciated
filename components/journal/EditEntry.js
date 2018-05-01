@@ -16,7 +16,7 @@ class EditEntry extends Component {
 
   render() {
     if (this.props.show) {
-      const { title, body } = this.props.entry
+      const { title, body } = this.props.entry;
       return (
         <View style={styles.container}>
           <Text style={styles.bold} >Title</Text>

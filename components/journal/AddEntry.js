@@ -23,7 +23,7 @@ class AddEntry extends Component {
           placeholder="Journal Entry"
           autoCapitalize="words"
         />
-      <Text style={styles.bold}>Body</Text>
+        <Text style={styles.bold}>Body</Text>
         <TextInput
           onChangeText={(body) => this.setState({body})}
           placeholder="Captain's log, Stardate..."
@@ -40,7 +40,7 @@ class AddEntry extends Component {
   _addEntryButton() {
     const { title, body } = this.state;
     const createdAt = moment().format("MMMM Do YYYY, h:mm a");
-    DB.journalEntry.add({ title, body, createdAt }, (addedData) => {
+    DB.journalEntry.add({ title, body, createdAt }, () => {
       this.props.getEntries();
       alert("Entry added.");
     });

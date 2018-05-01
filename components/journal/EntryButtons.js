@@ -28,7 +28,7 @@ class EntryButtons extends Component {
             getEntries={this.props.getEntries}
             toggleButtons={this.props.toggleButtons}
           />
-        <DeleteEntry
+          <DeleteEntry
             confirmed={this.props.confirmed}
             confirmDelete={this.props.confirmDelete}
             deleteEntry={this.props.deleteEntry}
