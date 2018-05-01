@@ -1,8 +1,10 @@
 import React from 'react';
-import { Button, View, Text, TouchableOpacity } from 'react-native';
-import DateTimePicker from 'react-native-modal-datetime-picker';
+import { Button, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import AddHabit from '../components/habits/AddHabit.js';
+import HabitList from "../components/habits/HabitList";
+
+import DB from "../DB.js";
+var DBEvents = require('react-native-db-models').DBEvents;
 
 export default class HabitsScreen extends React.Component {
   static navigationOptions = {
@@ -11,47 +13,48 @@ export default class HabitsScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isDatePickerVisible: false,
-      showAddHabit: false,
+      habits: [],
     };
   }
-
-  _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
-
-  _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
-
-  _handleDatePicked = (date) => {
-    console.log('A date has been picked: ', date);
-    this._hideDateTimePicker();
-  };
-
-  _toggleAddHabit() {
-    if (this.state.showAddHabit) {
-      this.setState({ showAddHabit: false, });
-    } else {
-      this.setState({ showAddHabit: true, });
-    }
+  
+  componentDidMount() {
+    this._getHabits();
   }
 
   render () {
     return (
       <View>
-        <Button
-          onPress={() => this.props.navigation.navigate("AddHabit")}
-          title="Add New Habit"
-        />
-        <AddHabit toggle={this.state.showAddHabit} />
-        <TouchableOpacity onPress={this._showDateTimePicker}>
-          <Text>Show DatePicker</Text>
-        </TouchableOpacity>
-        <DateTimePicker
-          mode="time"
-          is24Hour={false}
-          isVisible={this.state.isDateTimePickerVisible}
-          onConfirm={this._handleDatePicked}
-          onCancel={this._hideDateTimePicker}
-        />
+        <View>
+          <ScrollView>
+            <HabitList 
+              getHabits={this._getHabits.bind(this)}
+              habits={this.state.habits}
+            />
+          </ScrollView>
+        </View>
+        <View>
+          <Button
+            onPress={() => this.props.navigation.navigate("AddHabit", {
+              getHabits: this._getHabits.bind(this)
+            })}
+            title="Add New Habit"
+            />
+          </View>
       </View>
     );
   }
+  
+  _getHabits() {
+    DB.habits.get_all(results => {
+      let habits = [];
+      for (i in results.rows) {
+        habits.push(results.rows[i]);
+      }
+      this.setState({ habits });
+    });
+  }
 }
+
+const styles = StyleSheet.create({
+  
+});

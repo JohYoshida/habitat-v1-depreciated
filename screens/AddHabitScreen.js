@@ -15,7 +15,7 @@ export default class AddHabitScreen extends React.Component {
     const { params } = this.props.navigation.state;
     return (
       <View>
-        <AddHabit />
+        <AddHabit getHabits={params.getHabits} />
       </View>
     )
   }
