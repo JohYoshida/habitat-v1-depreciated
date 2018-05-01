@@ -1,10 +1,10 @@
 import React from "react";
 import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
 
+import EntryList from "../components/journal/EntryList";
+
 import DB from "../DB.js";
 var DBEvents = require("react-native-db-models").DBEvents;
-
-import EntryList from "../components/journal/EntryList";
 
 export default class JournalScreen extends React.Component {
   static navigationOptions = {

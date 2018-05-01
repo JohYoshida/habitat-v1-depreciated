@@ -2,10 +2,11 @@ import { Notifications } from "expo";
 import React from "react";
 import { StackNavigator } from "react-navigation";
 
-import MainTabNavigator from "./MainTabNavigator";
-import AddQuoteScreen from "../screens/AddQuoteScreen";
-import ViewQuotesScreen from "../screens/ViewQuotesScreen";
-import AddJournalScreen from "../screens/AddJournalScreen";
+import MainTabNavigator from './MainTabNavigator';
+import AddQuoteScreen from '../screens/AddQuoteScreen';
+import ViewQuotesScreen from '../screens/ViewQuotesScreen';
+import AddJournalScreen from '../screens/AddJournalScreen';
+import AddHabitScreen from '../screens/AddHabitScreen';
 
 import registerForPushNotificationsAsync from "../api/registerForPushNotificationsAsync";
 
@@ -21,8 +22,11 @@ const RootStackNavigator = StackNavigator(
       screen: ViewQuotesScreen
     },
     AddJournalEntry: {
-      screen: AddJournalScreen
-    }
+      screen: AddJournalScreen,
+    },
+    AddHabit: {
+      screen: AddHabitScreen,
+    },
   },
   {
     initialRouteName: "Main"

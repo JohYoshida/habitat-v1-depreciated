@@ -1,47 +1,41 @@
-import React, { PureComponent } from "react";
-import { Text, TouchableOpacity, StyleSheet, View } from "react-native";
+import React , { PureComponent } from 'react';
+import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 
-import EntryButtons from "./EntryButtons";
+import HabitButtons from "./HabitButtons";
 
 import DB from "../../DB.js";
-var DBEvents = require("react-native-db-models").DBEvents;
+var DBEvents = require('react-native-db-models').DBEvents;
 
-class EntryListItem extends PureComponent {
+class HabitListItem extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       showButtons: false,
       showEditor: false,
-      confirmed: false
+      confirmed: false,
     };
   }
 
   render() {
-    const { title, body, createdAt, updatedAt, key } = this.props.entry;
-    const created = "Created at " + createdAt;
-    let updated;
-    if (updatedAt) {
-      updated = "Updated at " + updatedAt;
-    }
+    const { name, notifyAt, repeat, key } = this.props.habit;
     return (
       <View>
         <TouchableOpacity
-          style={styles.entrySection}
+          style={styles.habitSectioin}
           onPress={this._toggleButtons.bind(this)}
         >
-          <Text style={styles.bold}>{title}</Text>
-          <Text>{body}</Text>
-          <Text style={styles.italic}>{created}</Text>
-          <Text style={styles.italic}>{updated}</Text>
+          <Text style={styles.bold}>{name}</Text>
+          <Text style={styles.italic}>{notifyAt}</Text>
+          <Text style={styles.italic}>{repeat}</Text>
         </TouchableOpacity>
-        <EntryButtons
+        <HabitButtons
           show={this.state.showButtons}
           confirmed={this.state.confirmed}
           showEditor={this.state.showEditor}
-          entry={this.props.entry}
-          getEntries={this.props.getEntries}
-          editEntry={this._editEntry.bind(this, key)}
-          deleteEntry={this._deleteEntry.bind(this, key)}
+          habit={this.props.habit}
+          getHabits={this.props.getHabits}
+          editHabit={this._editHabit.bind(this)}
+          deleteHabit={this._deleteHabit.bind(this, key)}
           confirmDelete={this._confirmDelete.bind(this)}
           toggleButtons={this._toggleButtons.bind(this)}
         />
@@ -49,7 +43,7 @@ class EntryListItem extends PureComponent {
     );
   }
 
-  _editEntry(key) {
+  _editHabit(key) {
     if (this.state.showEditor) {
       this.setState({ showEditor: false, confirmed: false });
     } else {
@@ -61,10 +55,10 @@ class EntryListItem extends PureComponent {
     this.setState({ confirmed: true });
   }
 
-  _deleteEntry(key) {
-    DB.journalEntry.remove_id(key, () => {
+  _deleteHabit(key) {
+    DB.habits.remove_id(key, () => {
       alert("Deleted!");
-      this.props.getEntries();
+      this.props.getHabits();
       this.setState({ confirmed: false });
     });
   }
@@ -79,16 +73,16 @@ class EntryListItem extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  entrySection: {
+  habitSectioin: {
     margin: 10,
-    marginTop: 0
+    marginTop: 0,
   },
   bold: {
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   italic: {
-    fontStyle: "italic"
-  }
+    fontStyle: "italic",
+  },
 });
 
-export default EntryListItem;
+export default HabitListItem;

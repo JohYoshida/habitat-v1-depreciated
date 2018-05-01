@@ -65,7 +65,7 @@ class QuoteListItem extends PureComponent {
 
   _toggleButtons() {
     if (this.state.showButtons) {
-      this.setState({ showButtons: false, confirmed: false });
+      this.setState({ showButtons: false, confirmed: false, showEditor: false });
     } else {
       this.setState({ showButtons: true, confirmed: false });
     }
