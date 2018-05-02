@@ -8,7 +8,7 @@ var DBEvents = require('react-native-db-models').DBEvents;
 
 export default class AddHabitScreen extends React.Component {
   static navigationOptions = {
-    title: 'Create Journal Entry',
+    title: 'Create Habit',
   };
 
   render() {
