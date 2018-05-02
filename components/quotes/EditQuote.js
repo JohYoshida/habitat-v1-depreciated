@@ -64,7 +64,7 @@ class EditQuote extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 140
+    margin: 5,
   },
   bold: {
     fontWeight: "bold"

@@ -28,7 +28,7 @@ class AddQuote extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text style={styles.bold}>Quote</Text>
         <TextInput
           onChangeText={text => this.setState({ text })}
@@ -67,6 +67,9 @@ class AddQuote extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    margin: 5
+  },
   bold: {
     fontWeight: "bold"
   }

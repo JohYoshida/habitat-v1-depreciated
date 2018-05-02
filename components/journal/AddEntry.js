@@ -16,7 +16,7 @@ class AddEntry extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text style={styles.bold}>Title</Text>
         <TextInput
           onChangeText={title => this.setState({ title })}
@@ -45,6 +45,9 @@ class AddEntry extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    margin: 5
+  },
   bold: {
     fontWeight: "bold"
   }

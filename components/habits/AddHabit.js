@@ -24,7 +24,7 @@ class AddHabit extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text style={styles.bold}>Habit</Text>
         <TextInput
           onChangeText={(name) => this.setState({name})}
@@ -77,8 +77,7 @@ class AddHabit extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    margin: 10
+    margin: 5
   },
   bold: {
     fontWeight: "bold",
