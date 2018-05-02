@@ -33,9 +33,9 @@ export default TabNavigator(
     Habits: {
       screen: HabitsScreen
     },
-    Ideas: {
-      screen: IdeasScreen
-    }
+    // Ideas: {
+    //   screen: IdeasScreen
+    // }
   },
   {
     navigationOptions: ({ navigation }) => ({
