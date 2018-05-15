@@ -61,6 +61,7 @@ class AddQuote extends Component {
       },
       addedData => {
         alert("Quote added.");
+        this.props.goBack();
       }
     );
   }

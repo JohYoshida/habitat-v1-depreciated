@@ -1,10 +1,18 @@
-import React , { Component } from 'react';
-import { Button, Picker, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { Component } from "react";
+import {
+  Button,
+  Picker,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
+} from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import moment from "moment";
 
 import DB from "../../DB.js";
-var DBEvents = require('react-native-db-models').DBEvents;
+var DBEvents = require("react-native-db-models").DBEvents;
 
 class AddHabit extends Component {
   constructor(props) {
@@ -13,7 +21,7 @@ class AddHabit extends Component {
       name: "",
       notifyAt: "",
       repeat: "never",
-      isDateTimePickerVisible: false,
+      isDateTimePickerVisible: false
     };
   }
 
@@ -26,9 +34,7 @@ class AddHabit extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.bold}>Habit</Text>
-        <TextInput
-          onChangeText={(name) => this.setState({name})}
-        />
+        <TextInput onChangeText={name => this.setState({ name })} />
         <TouchableOpacity onPress={this._showDateTimePicker}>
           <Text style={styles.bold}>Notify at </Text>
           <Text>{this.state.notifyAt}</Text>
@@ -43,15 +49,15 @@ class AddHabit extends Component {
         <Text style={styles.bold}>Repeat</Text>
         <Picker
           selectedValue={this.state.repeat}
-          onValueChange={(itemValue, itemIndex) => this.setState({repeat: itemValue})}>
+          onValueChange={(itemValue, itemIndex) =>
+            this.setState({ repeat: itemValue })
+          }
+        >
           <Picker.Item label="Never" value="never" />
           <Picker.Item label="Every Day" value="day" />
           <Picker.Item label="Every Week" value="week" />
         </Picker>
-        <Button
-          onPress={this._addHabitButton.bind(this)}
-          title="Add Habit"
-        />
+        <Button onPress={this._addHabitButton.bind(this)} title="Add Habit" />
       </View>
     );
   }
@@ -59,8 +65,9 @@ class AddHabit extends Component {
   _addHabitButton() {
     const { name, notifyAt, repeat } = this.state;
     DB.habits.add({ name, notifyAt, repeat }, () => {
-      alert("Habit added.");
       this.props.getHabits();
+      alert("Habit added.");
+      this.props.goBack();
     });
   }
 
@@ -68,7 +75,7 @@ class AddHabit extends Component {
 
   _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
-  _handleDatePicked = (date) => {
+  _handleDatePicked = date => {
     const notifyAt = moment(date).format("h:mm a");
     this.setState({ notifyAt });
     this._hideDateTimePicker();
@@ -80,7 +87,7 @@ const styles = StyleSheet.create({
     margin: 5
   },
   bold: {
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   notifyAt: {
     flex: 1,

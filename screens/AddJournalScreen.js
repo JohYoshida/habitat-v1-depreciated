@@ -15,7 +15,10 @@ export default class AddJournalScreen extends React.Component {
     const { params } = this.props.navigation.state;
     return (
       <View>
-        <AddEntry getEntries={params.getEntries} />
+        <AddEntry
+          getEntries={params.getEntries}
+          goBack={this.props.navigation.goBack}
+        />
       </View>
     );
   }

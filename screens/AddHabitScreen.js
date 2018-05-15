@@ -1,22 +1,25 @@
-import React from 'react';
-import { Button, View, Text, TextInput } from 'react-native';
+import React from "react";
+import { Button, View, Text, TextInput } from "react-native";
 
 import AddHabit from "../components/habits/AddHabit";
 
 import DB from "../DB.js";
-var DBEvents = require('react-native-db-models').DBEvents;
+var DBEvents = require("react-native-db-models").DBEvents;
 
 export default class AddHabitScreen extends React.Component {
   static navigationOptions = {
-    title: 'Create Journal Entry',
+    title: "Create Journal Entry"
   };
 
   render() {
     const { params } = this.props.navigation.state;
     return (
       <View>
-        <AddHabit getHabits={params.getHabits} />
+        <AddHabit
+          getHabits={params.getHabits}
+          goBack={this.props.navigation.goBack}
+        />
       </View>
-    )
+    );
   }
 }

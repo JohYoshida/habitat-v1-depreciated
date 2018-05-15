@@ -11,7 +11,7 @@ export default class AddQuoteScreen extends React.Component {
   render() {
     return (
       <View>
-        <AddQuote />
+        <AddQuote goBack={this.props.navigation.goBack} />
       </View>
     );
   }
