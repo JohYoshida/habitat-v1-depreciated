@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FlatList } from "react-native";
+import { FlatList, Text, StyleSheet, View } from "react-native";
 
 import QuoteListItem from "./QuoteListItem";
 
@@ -30,6 +30,8 @@ class QuoteList extends Component {
         data={quotes}
         extraData={this.state}
         renderItem={this._renderItem}
+        ItemSeparatorComponent={this._renderSeparator}
+        ListEmptyComponent={this._renderEmpty}
       />
     );
   }
@@ -41,6 +43,28 @@ class QuoteList extends Component {
       getQuotes={this.props.getQuotes}
     />
   );
+
+  _renderSeparator = () => {
+    return <View style={styles.separator}/>;
+  }
+
+  _renderEmpty = () => {
+    return (
+      <View style={styles.container}>
+        <Text>Quotes you add will appear here.</Text>
+      </View>
+    );
+  }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    margin: 10,
+  },
+  separator: {
+    height: 1,
+    backgroundColor: "#CED0CE",
+  },
+});
 
 export default QuoteList;

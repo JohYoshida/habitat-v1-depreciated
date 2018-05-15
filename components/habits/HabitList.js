@@ -1,5 +1,5 @@
 import React , { Component } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, Text, StyleSheet, View } from 'react-native';
 
 import HabitListItem from "./HabitListItem";
 
@@ -27,7 +27,8 @@ class HabitList extends Component {
         data={habits}
         extraData={this.state}
         renderItem={this._renderItem}
-        itemSeparatorComponent={this._renderSeparator}
+        ItemSeparatorComponent={this._renderSeparator}
+        ListEmptyComponent={this._renderEmpty}
       />
     );
   }
@@ -43,12 +44,22 @@ class HabitList extends Component {
   _renderSeparator = () => {
     return <View style={styles.separator}/>;
   }
+
+  _renderEmpty = () => {
+    return (
+      <View style={styles.container}>
+        <Text>Habits you add will appear here.</Text>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    margin: 10,
+  },
   separator: {
     height: 1,
-    width: "86%",
     backgroundColor: "#CED0CE",
   },
 });
