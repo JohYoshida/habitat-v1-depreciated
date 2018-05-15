@@ -40,6 +40,7 @@ class AddEntry extends Component {
     DB.journalEntry.add({ title, body, createdAt }, () => {
       this.props.getEntries();
       alert("Entry added.");
+      this.props.goBack();
     });
   }
 }
