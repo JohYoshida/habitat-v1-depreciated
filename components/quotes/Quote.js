@@ -51,6 +51,16 @@ class Quote extends Component {
       for (item in results.rows) {
         arr.push(results.rows[item]);
       }
+      if (arr.length < 1) {
+        console.log('less than 1!');
+        this.setState({
+          showEditor: false,
+          text: "Quotes you add will appear here.",
+          author: "Add a quote to get started!",
+          source: "Use the egg button to get a new quote from your collection.",
+          id: null
+        })
+      }
       const index = Math.floor(Math.random() * arr.length);
       const quote = arr[index];
       this.setState({
