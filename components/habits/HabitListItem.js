@@ -21,7 +21,7 @@ class HabitListItem extends PureComponent {
     return (
       <View>
         <TouchableOpacity
-          style={styles.habitSectioin}
+          style={styles.habitSection}
           onPress={this._toggleButtons.bind(this)}
         >
           <Text style={styles.bold}>{name}</Text>
@@ -73,7 +73,7 @@ class HabitListItem extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  habitSectioin: {
+  habitSection: {
     margin: 10,
     marginTop: 0,
   },
